@@ -18,7 +18,7 @@ function initialize(){
 
 		mainWindow = new BrowserWindow(windowOptions)
 		//mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
-		
+
 		mainWindow.on('closed', function(){
 				mainWindow = null
 		})
@@ -28,9 +28,9 @@ function initialize(){
 		const remoteProxy = 'http://127.0.0.1:3128' //replace it with your proxy address along with port
 		const targetURL = 'http://www.github.com' //the url you want to connect to.
 
-		mainWindow.webContents.session.setProxy({proxyRules: remoteProxy}, function () {
-        mainWindow.loadURL(targetURL);
-    });
+		mainWindow.webContents.session.setProxy({proxyRules: remoteProxy}, function (){
+			mainWindow.loadURL(targetURL)
+		})
 	}
 
 	/* replace the username and password with your own credentials */
