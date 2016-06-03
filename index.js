@@ -26,10 +26,14 @@ function initialize(){
 		const session = electron.session
 		const ses = session.fromPartition('proxySession')
 		const remoteProxy = 'http://127.0.0.1:3128' //replace it with your proxy address along with port
-		const targetURL = 'http://www.github.com' //the url you want to connect to.
+		const targetURL = 'http://www.stackexchange.com' //the url you want to connect to.
+		const referrerURL = 'http://www.google.com' //referrer url
 
 		mainWindow.webContents.session.setProxy({proxyRules: remoteProxy}, function (){
-			mainWindow.loadURL(targetURL)
+			//mainWindow.loadURL(targetURL)
+			const httpExtraHeader = {httpReferrer: referrerURL + '\n'}
+			//mainWindow.loadURL(targetURL, httpExtraHeader)
+			mainWindow.webContents.loadURL(targetURL, httpExtraHeader)
 		})
 	}
 
